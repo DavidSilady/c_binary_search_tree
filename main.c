@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "tree.h"
+#include "hash.h"
 
 
 int main() {
