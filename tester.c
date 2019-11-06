@@ -29,6 +29,7 @@ void insert_test(Hash *hash, int array_size, int *array) {
 
     for (int i = 0; i < array_size; ++i) {
         hash_add(hash, array[i]);
+        printf("| Inserted %d |\n", array[i]);
     }
 
     end = clock();
@@ -45,7 +46,7 @@ void find_test(Hash *hash, int array_size, int *array) {
     for (int i = 0; i < array_size; ++i) {
         Node *node = hash_find(hash, array[i]);
         if(node != NULL) {
-            printf("| Found %d |\n", node->value);
+            //printf("| Found %d |\n", node->value);
         }
     }
 
@@ -55,9 +56,9 @@ void find_test(Hash *hash, int array_size, int *array) {
 }
 
 void small_test() {
-    const int array_size = 100;
+    const int array_size = 10000;
     int *array = read_input("C:\\Users\\david\\CLionProjects\\trees\\test1.txt", array_size);
-    Hash *hash = new_hash(10);
+    Hash *hash = new_hash(100);
 
     insert_test(hash, array_size, array);
     find_test(hash, array_size, array);
