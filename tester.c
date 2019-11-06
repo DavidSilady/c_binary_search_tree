@@ -8,7 +8,7 @@
 #include "tester.h"
 #include <time.h>
 
-int *read_input(char file_name[9], int input_size) {
+int *read_input(char file_name[49], int input_size) {
     int *input = malloc(input_size * sizeof(int));
     FILE *file;
     file = fopen(file_name, "r");
@@ -17,6 +17,7 @@ int *read_input(char file_name[9], int input_size) {
         fscanf(file, "%d", &input[i]);
     }
 
+    fclose(file);
     return input;
 }
 
@@ -32,7 +33,7 @@ void insert_test(Hash *hash, int array_size, int *array) {
 
     end = clock();
     time_elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Time elapsed: %lf", time_elapsed);
+    printf("Time elapsed: %lf\n", time_elapsed);
 }
 
 void find_test(Hash *hash, int array_size, int *array) {
@@ -44,23 +45,22 @@ void find_test(Hash *hash, int array_size, int *array) {
     for (int i = 0; i < array_size; ++i) {
         Node *node = hash_find(hash, array[i]);
         if(node != NULL) {
-            printf("Found %d", node->value);
+            printf("| Found %d |\n", node->value);
         }
     }
 
     end = clock();
     time_elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Time elapsed: %lf", time_elapsed);
+    printf("Time elapsed: %lf\n", time_elapsed);
 }
 
 void small_test() {
     const int array_size = 100;
-    int *array = read_input("test1.txt", array_size);
+    int *array = read_input("C:\\Users\\david\\CLionProjects\\trees\\test1.txt", array_size);
     Hash *hash = new_hash(10);
 
     insert_test(hash, array_size, array);
     find_test(hash, array_size, array);
-
 }
 
 

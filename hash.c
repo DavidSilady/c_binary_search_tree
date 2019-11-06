@@ -5,10 +5,11 @@
 #include "hash.h"
 #include "tree.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 #define MAX_LOAD_FACTOR 1.5
 
-void resize(Hash *hash, int new_size);
+void resize(Hash *hash, int new_prime);
 int find_next_prime(int value);
 
 Tree **new_hash_table(int size) {
@@ -86,12 +87,12 @@ void hash_refill(Hash *hash, Node *node) {
     free(node);
 }
 
-void resize(Hash *hash, int new_size) {
+void resize(Hash *hash, int new_prime) {
     Tree **old_table = hash->table;
     int old_prime = hash->prime;
-
-    hash->table = new_hash_table(new_size);
-    hash->prime = new_size;
+    printf("\nResizing from %d to %d. . .\n\n", old_prime, new_prime);
+    hash->table = new_hash_table(new_prime);
+    hash->prime = new_prime;
 
     for (int i = 0; i < old_prime; ++i) {
         hash_refill(hash, old_table[i]->root);

@@ -35,7 +35,7 @@ Tree *new_tree() {
 void insert(Tree *tree, int value) {
     if(tree->root == NULL) {
         tree->root = new_node(value, NULL);
-        printf("-1\n");
+       // printf("-1\n");
     } else {
         tree->root = insert_node(tree->root, value);
     }
@@ -44,20 +44,20 @@ void insert(Tree *tree, int value) {
 
 Node *insert_node(Node *node, int new_value) {
     if (new_value == node->value) {
-        printf("%d\n", find_closest_value(node));
+        //printf("%d\n", find_closest_value(node));
         return node;
     }
     if(new_value < node->value) {
         if(node->left == NULL) {
             node->left = new_node(new_value, node);
-            printf("%d\n", find_closest_value(node->left));
+            //printf("%d\n", find_closest_value(node->left));
         } else {
             insert_node(node->left, new_value);
         }
     } else {
         if(node->right == NULL) {
             node->right = new_node(new_value, node);
-            printf("%d\n", find_closest_value(node->right));
+            //printf("%d\n", find_closest_value(node->right));
         } else {
             insert_node(node->right, new_value);
         }
