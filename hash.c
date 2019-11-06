@@ -9,6 +9,7 @@
 #define MAX_LOAD_FACTOR 1.5
 
 void resize(Hash *hash, int new_size);
+int find_next_prime(int value);
 
 Tree **new_hash_table(int size) {
     Tree **table = malloc(size * sizeof(Tree));
@@ -22,8 +23,8 @@ Hash *new_hash(int size) {
     Hash *hash = malloc(sizeof(Hash));
     hash->loadFactor = 0;
     hash->num_elements = 0;
-    hash->prime = size;
-    hash->table = new_hash_table(size);
+    hash->prime = find_next_prime(size);
+    hash->table = new_hash_table(hash->prime);
     return hash;
 }
 

@@ -14,4 +14,8 @@ typedef struct Hash {
     Tree **table;
 } Hash;
 
+Hash *new_hash(int size);
+void hash_add(Hash *hash, int value);
+Node *hash_find(Hash *hash, int value);
+
 #endif //TREES_HASH_H
