@@ -7,6 +7,8 @@
 #include "hash.h"
 #include "tester.h"
 #include <time.h>
+#include "github_src/stolen_tree/rbtree.c"
+#include "github_src/stolen_hash/hashtab.c"
 
 int *read_input(char file_name[49], int input_size) {
     int *input = malloc(input_size * sizeof(int));
@@ -59,9 +61,20 @@ void small_test() {
     const int array_size = 10000;
     int *array = read_input("C:\\Users\\david\\CLionProjects\\trees\\test1.txt", array_size);
     Hash *hash = new_hash(100);
+    //insert_test(hash, array_size, array);
+    //find_test(hash, array_size, array);
 
-    insert_test(hash, array_size, array);
-    find_test(hash, array_size, array);
+    rbtree rb_tree = rbtree_create();
+    for (int i = 0; i < array_size; ++i) {
+        rbtree_insert(rb_tree, (void *)&array[i], compare_int);
+        //printf("| Inserted %d |\n", array[i]);
+    }
+
+    hashtab_t *hash_tab = ht_init(16, NULL);
+    for (int i = 0; i < array_size; ++i) {
+        ht_insert(hash_tab, &array[i], sizeof(int), &array[i], sizeof(int));
+    }
+
 }
 
 
