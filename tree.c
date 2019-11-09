@@ -12,11 +12,14 @@ Node *recursive_find_value(Node *node, int i);
 Node *rebalance(Node *node);
 Node *max_node(Node *node);
 Node *min_node(Node *node);
-int find_closest_value(Node *node);
 
 
 Node *new_node(int value, Node *parent) {
     Node *node = malloc(sizeof(Node));
+    if (node == NULL) {
+        printf("Memory full.");
+        return NULL;
+    }
     node->left = NULL;
     node->right = NULL;
     node->parent = parent;
@@ -27,6 +30,10 @@ Node *new_node(int value, Node *parent) {
 
 Tree *new_tree() {
     Tree *tree = malloc(sizeof(Tree));
+    if (tree == NULL) {
+        printf("Memory full.");
+        return NULL;
+    }
     tree->size = 0;
     tree->root = NULL;
     return tree;
@@ -35,29 +42,55 @@ Tree *new_tree() {
 void insert(Tree *tree, int value) {
     if(tree->root == NULL) {
         tree->root = new_node(value, NULL);
-       // printf("-1\n");
     } else {
         tree->root = insert_node(tree->root, value);
     }
     tree->size++;
 }
 
-Node *insert_node(Node *node, int new_value) {
+Node *bvs_insert_node(Node *node, int new_value);
+void bvs_insert(Tree *tree, int value) {
+    if(tree->root == NULL) {
+        tree->root = new_node(value, NULL);
+    } else {
+        tree->root = bvs_insert_node(tree->root, value);
+    }
+    tree->size++;
+}
+
+Node *bvs_insert_node(Node *node, int new_value) {
     if (new_value == node->value) {
-        //printf("%d\n", find_closest_value(node));
         return node;
     }
     if(new_value < node->value) {
         if(node->left == NULL) {
             node->left = new_node(new_value, node);
-            //printf("%d\n", find_closest_value(node->left));
+        } else {
+            bvs_insert_node(node->left, new_value);
+        }
+    } else {
+        if(node->right == NULL) {
+            node->right = new_node(new_value, node);
+        } else {
+            bvs_insert_node(node->right, new_value);
+        }
+    }
+    return node;
+}
+
+Node *insert_node(Node *node, int new_value) {
+    if (new_value == node->value) {
+        return node;
+    }
+    if(new_value < node->value) {
+        if(node->left == NULL) {
+            node->left = new_node(new_value, node);
         } else {
             insert_node(node->left, new_value);
         }
     } else {
         if(node->right == NULL) {
             node->right = new_node(new_value, node);
-            //printf("%d\n", find_closest_value(node->right));
         } else {
             insert_node(node->right, new_value);
         }
@@ -67,6 +100,8 @@ Node *insert_node(Node *node, int new_value) {
 }
 
 void recursive_in_order_print(Node *node) {
+    if(node == NULL)
+        return;
     if(node->left != NULL) {
         recursive_in_order_print(node->left);
     }
@@ -74,6 +109,24 @@ void recursive_in_order_print(Node *node) {
     if(node->right != NULL) {
         recursive_in_order_print(node->right);
     }
+}
+
+void recursive_deletion(Node *node) {
+    if(node == NULL) {
+        return;
+    }
+    if(node->left != NULL) {
+        recursive_deletion(node->left);
+    }
+    if(node->right != NULL) {
+        recursive_deletion(node->right);
+    }
+    free(node);
+}
+
+void destroy_tree(Tree *tree) {
+    recursive_deletion(tree->root);
+    free(tree);
 }
 
 void in_order_print(Tree *tree) {
@@ -190,70 +243,24 @@ int update_height(Node *node) {
     return node->height;
 }
 
-int max_from_array(const int *array, int array_size) {
-    int max = 0;
-    for (int i = 0; i < array_size; ++i) {
-        if (array[i] > max)
-            max = array[i];
-    }
-    return max;
-}
-
-int closest_from_array(const int array[3], int array_size, int value) {
-    int closest = array[0];
-    for (int i = 0; i < array_size; ++i) {
-        if (abs(value - array[i]) < abs(value - closest)) {
-            closest = array[i];
-        }
-    }
-    return closest;
-}
-
-int find_closest_value(Node *node) {
-    int array[3];
-    int array_size = 0;
-    if (node->parent != NULL) {
-        array[array_size] = node->parent->value;
-        array_size++;
-    }
-    if (node->left != NULL) {
-        array[array_size] = max_node(node->left)->value;
-        array_size++;
-    }
-    if (node->right != NULL) {
-        array[array_size] = min_node(node->right)->value;
-        array_size++;
-    }
-    if (array_size == 0) {
-        return -1;
-    }
-    return closest_from_array(array, array_size, node->value);
-}
-
 Node *find_value(Tree *tree, int value) {
     return recursive_find_value(tree->root, value);
 }
 
 Node *recursive_find_value(Node *node, int i) {
+    if(node == NULL) {
+        return NULL;
+    }
+
     if(node->value == i) {
         return node;
     }
 
-    if(i < node->value) {
-        if(node->left == NULL) {
-            return NULL;
-        } else {
-            recursive_find_value(node->left, i);
-        }
+    if(node->value > i) {
+        recursive_find_value(node->left, i);
     } else {
-        if(node->right == NULL) {
-            return NULL;
-        } else {
-            recursive_find_value(node->right, i);
-        }
+        recursive_find_value(node->right, i);
     }
-
-    return NULL;
 }
 
 Node *min_node(Node *node) {
@@ -272,39 +279,6 @@ void swap_value(Node *node1, Node *node2) {
     int tmp = node1->value;
     node1->value = node2->value;
     node2->value = tmp;
-}
-
-void delete_note(Node *node) {
-
-    Node *parent = node->parent;
-    if (parent != NULL) {
-        if (parent->left == node) {
-            parent->left = NULL;
-        } else {
-            parent->right = NULL;
-        }
-    }
-
-    return free(node);
-}
-
-void remove_node(Node *node) {
-    if (node->right == NULL && node->left == NULL) {
-        delete_note(node);
-        return;
-    }
-    if (node->right != NULL) {
-        Node *min = min_node(node->right);
-        swap_value(node, min);
-        remove_node(min);
-        return;
-    }
-    if (node->left != NULL) {
-        Node *max = max_node(node->left);
-        swap_value(node, max);
-        remove_node(max);
-        return;
-    }
 }
 
 

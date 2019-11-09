@@ -8,9 +8,9 @@
 typedef struct Node {
     int value;
     int height;
+    struct Node *parent;
     struct Node *right;
     struct Node *left;
-    struct Node *parent;
 } Node;
 
 typedef struct Tree {
@@ -19,9 +19,10 @@ typedef struct Tree {
 } Tree;
 
 void insert(Tree *tree, int value);
+void bvs_insert(Tree *tree, int value);
 void in_order_print(Tree *tree);
 Node *find_value(Tree *tree, int i);
-void remove_node(Node *node);
 Tree *new_tree();
+void destroy_tree(Tree *tree);
 
 #endif //TREES_TREE_H

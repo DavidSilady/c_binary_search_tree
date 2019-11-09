@@ -7,10 +7,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAX_LOAD_FACTOR 1.5
+#define MAX_LOAD_FACTOR 5
 
-void resize(Hash *hash, int new_prime);
-int find_next_prime(int value);
+void resize(Hash *hash, int new_size);
+
 
 Tree **new_hash_table(int size) {
     Tree **table = malloc(size * sizeof(Tree));
@@ -24,36 +24,21 @@ Hash *new_hash(int size) {
     Hash *hash = malloc(sizeof(Hash));
     hash->loadFactor = 0;
     hash->num_elements = 0;
-    hash->prime = find_next_prime(size);
-    hash->table = new_hash_table(hash->prime);
+    hash->size = size;
+    hash->table = new_hash_table(hash->size);
     return hash;
 }
 
-int hash_function(Hash *hash, int value) {
-    return value % hash->prime;
+void hash_destroy(Hash *hash) {
+    for (int i = 0; i < hash->size; ++i) {
+        destroy_tree(hash->table[i]);
+    }
+    free(hash->table);
+    free(hash);
 }
 
-int find_next_prime(int value) {
-    int next_prime = value;
-
-    if(next_prime % 2 == 0) {
-        next_prime += 1;
-    }
-
-    while(1) {
-        int i;
-        for (i = 3; i < next_prime; i += 2) {
-            if(next_prime % 2 == 0) {
-                next_prime += 2;
-                break;
-            }
-        }
-        if (i == next_prime) {
-            break;
-        }
-    }
-
-    return next_prime;
+int hash_function(Hash *hash, int value) {
+    return value % hash->size;
 }
 
 void hash_add(Hash *hash, int value) {
@@ -63,10 +48,10 @@ void hash_add(Hash *hash, int value) {
 
     insert(tree, value);
     hash->num_elements += tree->size - old_size;
-    hash->loadFactor = ((double) hash->num_elements / (double) hash->prime);
+    hash->loadFactor = ((double) hash->num_elements / (double) hash->size);
 
-    if(hash->loadFactor > 1.5) {
-        resize(hash, find_next_prime(hash->prime * 2));
+    if(hash->loadFactor > MAX_LOAD_FACTOR) {
+        resize(hash, hash->size * 2);
     }
 }
 
@@ -87,14 +72,15 @@ void hash_refill(Hash *hash, Node *node) {
     free(node);
 }
 
-void resize(Hash *hash, int new_prime) {
+void resize(Hash *hash, int new_size) {
     Tree **old_table = hash->table;
-    int old_prime = hash->prime;
-    printf("\nResizing from %d to %d. . .\n\n", old_prime, new_prime);
-    hash->table = new_hash_table(new_prime);
-    hash->prime = new_prime;
+    int old_size = hash->size;
+    //printf("\nResizing from %d to %d. . .\n\n", old_size, new_size);
+    hash->size = new_size;
+    hash->table = new_hash_table(hash->size);
 
-    for (int i = 0; i < old_prime; ++i) {
+    hash->loadFactor = 0;
+    for (int i = 0; i < old_size; ++i) {
         hash_refill(hash, old_table[i]->root);
     }
 
