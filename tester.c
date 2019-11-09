@@ -232,7 +232,7 @@ void find_test_my_tree(Tree *tree, int array_size, int *array) {
 
     end = clock();
     time_elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    fprintf(output, "Time elapsed (My Tree Find): %lf\n", time_elapsed);
+    fprintf(output, "Time elapsed (My Tree Find): %lf\n\n", time_elapsed);
 
     fclose(output);
 }
@@ -283,35 +283,33 @@ void test(int *array, int array_size) {
     Tree *tree = new_tree();
     Tree *bvs_tree = new_tree();
     Hash *hash = new_hash(8);
-/*
+
     insert_test_stolen_hash(hash_tab, array_size, array);
     find_test_stolen_hash(hash_tab, array_size, array);
     ht_destroy(hash_tab);
-    printf("Stolen hash completed.");
+    printf("Stolen hash completed.\n");
+
     insert_test_stolen_tree(rb_tree, array_size, array);
     find_test_stolen_tree(rb_tree, array_size, array);
     for (int i = 0; i < array_size; ++i) {
         rbtree_delete(rb_tree,  (void *)&array[i], compare_int);
     }
-    printf("Stolen tree completed.");
-*/
+    printf("Stolen tree completed.\n");
+
     insert_test_my_hash(hash, array_size, array);
     find_test_my_hash(hash, array_size, array);
     hash_destroy(hash);
-/*
-    printf("My hash completed.");
+    printf("My hash completed.\n");
 
     insert_test_my_tree(tree, array_size, array);
     find_test_my_tree(tree, array_size, array);
     destroy_tree(tree);
-
-    printf("My tree completed.");
+    printf("My tree completed.\n");
 
     insert_test_my_bvs_tree(bvs_tree, array_size, array);
     find_test_my_bvs_tree(bvs_tree, array_size, array);
     destroy_tree(bvs_tree);
-*/
-    printf("My bvs tree completed.");
+    printf("My bvs tree completed.\n");
 }
 
 void small_test() {
