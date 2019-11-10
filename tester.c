@@ -293,7 +293,7 @@ void test(int *array, int array_size) {
     Tree *tree = new_tree();
     Tree *bvs_tree = new_tree();
     Hash *hash = new_hash(8);
-/*
+
     insert_test_stolen_hash(hash_tab, array_size, array);
     find_test_stolen_hash(hash_tab, array_size, array);
     ht_destroy(hash_tab);
@@ -310,7 +310,7 @@ void test(int *array, int array_size) {
     find_test_my_hash(hash, array_size, array);
     hash_destroy(hash);
     printf("My hash completed.\n");
-*/
+
     insert_test_my_tree(tree, array_size, array);
     find_test_my_tree(tree, array_size, array);
     destroy_tree(tree);
@@ -322,8 +322,7 @@ void test(int *array, int array_size) {
     printf("My bvs tree completed.\n");
 }
 
-void small_test() {
-    const int array_size = 100000;
+void do_test(int array_size) {
     //int *random_array = read_input("C:\\Users\\david\\CLionProjects\\trees\\test1.txt", array_size);
     int *random_array = generate_array(array_size, 0, array_size);
     FILE *output = fopen(OUTPUT, "a");
@@ -339,6 +338,15 @@ void small_test() {
     test(consecutive_array, array_size);
     free(consecutive_array);
     printf("Completed.");
+}
+
+void init_test(int num_tests) {
+    FILE *output;
+    for (int i = 0; i < num_tests; ++i) {
+        output = fopen(OUTPUT, "a+");
+        fprintf(output, "Test n.%d:\n", i);
+        do_test(100000);
+    }
 }
 
 

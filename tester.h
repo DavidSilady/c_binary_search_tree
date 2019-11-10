@@ -5,5 +5,5 @@
 #ifndef TREES_TESTER_H
 #define TREES_TESTER_H
 
-void small_test();
+void init_test(int num_tests);
 #endif //TREES_TESTER_H

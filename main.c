@@ -4,5 +4,6 @@
 #include "tester.h"
 
 int main() {
-    small_test();
+    int num_tests = 10;
+    init_test(num_tests);
 }
