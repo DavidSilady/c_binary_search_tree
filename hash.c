@@ -44,10 +44,10 @@ int hash_function(Hash *hash, int value) {
 void hash_add(Hash *hash, int value) {
     int index = hash_function(hash, value);
     Tree *tree = hash->table[index];
-    int old_size = tree->size;
+    int tree_old_size = tree->size;
 
     insert(tree, value);
-    hash->num_elements += tree->size - old_size;
+    hash->num_elements += tree->size - tree_old_size;
     hash->loadFactor = ((double) hash->num_elements / (double) hash->size);
 
     if(hash->loadFactor > MAX_LOAD_FACTOR) {
@@ -75,7 +75,7 @@ void hash_refill(Hash *hash, Node *node) {
 void resize(Hash *hash, int new_size) {
     Tree **old_table = hash->table;
     int old_size = hash->size;
-    //printf("\nResizing from %d to %d. . .\n\n", old_size, new_size);
+
     hash->size = new_size;
     hash->table = new_hash_table(hash->size);
 

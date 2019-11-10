@@ -427,7 +427,7 @@ void init_test(int num_tests) {
         fprintf(output, "Test ID: %d\n", j);
         for (int i = 0; i < 5; ++i) {
             fprintf(output,
-                    "%lf %lf %lf %lf\n",
+                    "%lf    %lf    %lf    %lf\n",
                     avg[j][i].a,
                     avg[j][i].b,
                     avg[j][i].c,
