@@ -12,6 +12,8 @@ Node *recursive_find_value(Node *node, int i);
 Node *rebalance(Node *node);
 Node *max_node(Node *node);
 Node *min_node(Node *node);
+int max(int a, int b);
+int height(Node *node);
 
 
 Node *new_node(int value, Node *parent) {
@@ -95,6 +97,7 @@ Node *insert_node(Node *node, int new_value) {
             insert_node(node->right, new_value);
         }
     }
+    node->height = max(height(node->right), height(node->left)) + 1;
     node = rebalance(node);
     return node;
 }
@@ -152,6 +155,7 @@ Node *right_rotation(Node *top) {
             parent->right = new_top;
         }
     }
+    update_height(new_top);
     return new_top;
 }
 
@@ -175,6 +179,7 @@ Node *left_rotation(Node *top) {
             parent->right = new_top;
         }
     }
+    update_height(new_top);
     return new_top;
 }
 
@@ -210,7 +215,7 @@ int right_height(Node *node) {
 }
 
 Node *rebalance(Node *node) {
-    update_height(node);
+    // update_height(node); this would slow down the insert by 1000x
     if (node->height == 0)
         return node;
     if (height(node->left) - height(node->right) > 1) {
@@ -273,12 +278,6 @@ Node *max_node(Node *node) {
     if(node->right == NULL)
         return node;
     return max_node(node->right);
-}
-
-void swap_value(Node *node1, Node *node2) {
-    int tmp = node1->value;
-    node1->value = node2->value;
-    node2->value = tmp;
 }
 
 

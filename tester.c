@@ -12,7 +12,15 @@
 #include "github_src/stolen_hash/hashtab.c"
 
 #define DEBUG 10000
-#define OUTPUT "C:/Users/david/CLionProjects/trees/output.txt"
+#define MAX_STACK 40000
+#define OUTPUT "C:/Users/david/CLionProjects/trees/test.log"
+
+int min(int a, int b) {
+    if (a < b)
+        return a;
+    else
+        return b;
+}
 
 int *read_input(char file_name[49], int input_size) {
     int *input = malloc(input_size * sizeof(int));
@@ -228,6 +236,8 @@ void find_test_my_tree(Tree *tree, int array_size, int *array) {
 
     for (int i = 0; i < array_size; ++i) {
         Node *node = find_value(tree, array[i]);
+        if (node == NULL)
+            printf("%d | ", array[i]);
     }
 
     end = clock();
@@ -283,7 +293,7 @@ void test(int *array, int array_size) {
     Tree *tree = new_tree();
     Tree *bvs_tree = new_tree();
     Hash *hash = new_hash(8);
-
+/*
     insert_test_stolen_hash(hash_tab, array_size, array);
     find_test_stolen_hash(hash_tab, array_size, array);
     ht_destroy(hash_tab);
@@ -300,13 +310,13 @@ void test(int *array, int array_size) {
     find_test_my_hash(hash, array_size, array);
     hash_destroy(hash);
     printf("My hash completed.\n");
-
+*/
     insert_test_my_tree(tree, array_size, array);
     find_test_my_tree(tree, array_size, array);
     destroy_tree(tree);
     printf("My tree completed.\n");
 
-    insert_test_my_bvs_tree(bvs_tree, array_size, array);
+    insert_test_my_bvs_tree(bvs_tree, min(array_size, MAX_STACK), array);
     find_test_my_bvs_tree(bvs_tree, array_size, array);
     destroy_tree(bvs_tree);
     printf("My bvs tree completed.\n");
@@ -328,6 +338,7 @@ void small_test() {
     int *consecutive_array = generate_consecutive_array(array_size);
     test(consecutive_array, array_size);
     free(consecutive_array);
+    printf("Completed.");
 }
 
 

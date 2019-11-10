@@ -1,0 +1,146 @@
+
+
+Random Array:
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+20000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+30000. inserted | Split time: 0.015000 | Total time elapsed: 0.015000
+40000. inserted | Split time: 0.000000 | Total time elapsed: 0.015000
+50000. inserted | Split time: 0.000000 | Total time elapsed: 0.015000
+60000. inserted | Split time: 0.016000 | Total time elapsed: 0.031000
+70000. inserted | Split time: 0.000000 | Total time elapsed: 0.031000
+80000. inserted | Split time: 0.000000 | Total time elapsed: 0.031000
+90000. inserted | Split time: 0.015000 | Total time elapsed: 0.046000
+Time elapsed (My Tree Insert): 0.046000
+Time elapsed (My Tree Find): 0.016000
+
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.016000 | Total time elapsed: 0.016000
+20000. inserted | Split time: 0.000000 | Total time elapsed: 0.016000
+30000. inserted | Split time: 0.000000 | Total time elapsed: 0.016000
+Time elapsed (My BVS Tree Insert): 0.016000
+Time elapsed (My BVS Tree Find): 0.015000
+
+
+Consecutive Array:
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+20000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+30000. inserted | Split time: 0.016000 | Total time elapsed: 0.016000
+40000. inserted | Split time: 0.000000 | Total time elapsed: 0.016000
+50000. inserted | Split time: 0.015000 | Total time elapsed: 0.031000
+60000. inserted | Split time: 0.000000 | Total time elapsed: 0.031000
+70000. inserted | Split time: 0.016000 | Total time elapsed: 0.047000
+80000. inserted | Split time: 0.000000 | Total time elapsed: 0.047000
+90000. inserted | Split time: 0.015000 | Total time elapsed: 0.062000
+Time elapsed (My Tree Insert): 0.078000
+Time elapsed (My Tree Find): 0.000000
+
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.297000 | Total time elapsed: 0.297000
+20000. inserted | Split time: 0.969000 | Total time elapsed: 1.266000
+30000. inserted | Split time: 1.562000 | Total time elapsed: 2.828000
+Time elapsed (My BVS Tree Insert): 5.172000
+Time elapsed (My BVS Tree Find): 18.422000
+
+
+Random Array:
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.015000 | Total time elapsed: 0.015000
+20000. inserted | Split time: 0.000000 | Total time elapsed: 0.015000
+30000. inserted | Split time: 0.000000 | Total time elapsed: 0.015000
+40000. inserted | Split time: 0.016000 | Total time elapsed: 0.031000
+50000. inserted | Split time: 0.000000 | Total time elapsed: 0.031000
+60000. inserted | Split time: 0.015000 | Total time elapsed: 0.046000
+70000. inserted | Split time: 0.000000 | Total time elapsed: 0.046000
+80000. inserted | Split time: 0.000000 | Total time elapsed: 0.046000
+90000. inserted | Split time: 0.016000 | Total time elapsed: 0.062000
+Time elapsed (My Tree Insert): 0.062000
+
+
+Random Array:
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 1.093000 | Total time elapsed: 1.093000
+20000. inserted | Split time: 3.250000 | Total time elapsed: 4.343000
+30000. inserted | Split time: 4.860000 | Total time elapsed: 9.203000
+40000. inserted | Split time: 6.203000 | Total time elapsed: 15.406000
+50000. inserted | Split time: 6.860000 | Total time elapsed: 22.266000
+60000. inserted | Split time: 7.906000 | Total time elapsed: 30.172000
+70000. inserted | Split time: 8.937000 | Total time elapsed: 39.109000
+80000. inserted | Split time: 10.265000 | Total time elapsed: 49.374000
+90000. inserted | Split time: 11.313000 | Total time elapsed: 60.687000
+Time elapsed (My Tree Insert): 71.765000
+Time elapsed (My Tree Find): 0.032000
+
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+20000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+30000. inserted | Split time: 0.015000 | Total time elapsed: 0.015000
+Time elapsed (My BVS Tree Insert): 0.015000
+Time elapsed (My BVS Tree Find): 0.032000
+
+
+Consecutive Array:
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.906000 | Total time elapsed: 0.906000
+20000. inserted | Split time: 3.125000 | Total time elapsed: 4.031000
+30000. inserted | Split time: 5.437000 | Total time elapsed: 9.468000
+40000. inserted | Split time: 8.891000 | Total time elapsed: 18.359000
+50000. inserted | Split time: 13.312000 | Total time elapsed: 31.671000
+60000. inserted | Split time: 15.047000 | Total time elapsed: 46.718000
+70000. inserted | Split time: 20.641000 | Total time elapsed: 67.359000
+80000. inserted | Split time: 27.860000 | Total time elapsed: 95.219000
+90000. inserted | Split time: 31.046000 | Total time elapsed: 126.265000
+Time elapsed (My Tree Insert): 161.702000
+Time elapsed (My Tree Find): 0.016000
+
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.328000 | Total time elapsed: 0.328000
+20000. inserted | Split time: 1.078000 | Total time elapsed: 1.406000
+30000. inserted | Split time: 2.031000 | Total time elapsed: 3.437000
+Time elapsed (My BVS Tree Insert): 6.671000
+Time elapsed (My BVS Tree Find): 27.485000
+
+
+Random Array:
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+20000. inserted | Split time: 0.015000 | Total time elapsed: 0.015000
+30000. inserted | Split time: 0.000000 | Total time elapsed: 0.015000
+40000. inserted | Split time: 0.000000 | Total time elapsed: 0.015000
+50000. inserted | Split time: 0.016000 | Total time elapsed: 0.031000
+60000. inserted | Split time: 0.000000 | Total time elapsed: 0.031000
+70000. inserted | Split time: 0.015000 | Total time elapsed: 0.046000
+80000. inserted | Split time: 0.000000 | Total time elapsed: 0.046000
+90000. inserted | Split time: 0.016000 | Total time elapsed: 0.062000
+Time elapsed (My Tree Insert): 0.062000
+Time elapsed (My Tree Find): 0.031000
+
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+20000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+30000. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+Time elapsed (My BVS Tree Insert): 0.016000
+Time elapsed (My BVS Tree Find): 0.016000
+
+
+Consecutive Array:
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.015000 | Total time elapsed: 0.015000
+20000. inserted | Split time: 0.000000 | Total time elapsed: 0.015000
+30000. inserted | Split time: 0.016000 | Total time elapsed: 0.031000
+40000. inserted | Split time: 0.000000 | Total time elapsed: 0.031000
+50000. inserted | Split time: 0.015000 | Total time elapsed: 0.046000
+60000. inserted | Split time: 0.016000 | Total time elapsed: 0.062000
+70000. inserted | Split time: 0.000000 | Total time elapsed: 0.062000
+80000. inserted | Split time: 0.016000 | Total time elapsed: 0.078000
+90000. inserted | Split time: 0.015000 | Total time elapsed: 0.093000
+Time elapsed (My Tree Insert): 0.109000
+Time elapsed (My Tree Find): 0.016000
+
+    0. inserted | Split time: 0.000000 | Total time elapsed: 0.000000
+10000. inserted | Split time: 0.375000 | Total time elapsed: 0.375000
+20000. inserted | Split time: 1.156000 | Total time elapsed: 1.531000
+30000. inserted | Split time: 2.234000 | Total time elapsed: 3.765000
+Time elapsed (My BVS Tree Insert): 7.171000
+Time elapsed (My BVS Tree Find): 27.344000
