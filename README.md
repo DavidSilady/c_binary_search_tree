@@ -14,12 +14,16 @@ Zadanie – Vyhľadávanie v dynamických množinách
   z hľadiska efektivity operácii insert a search v rozličných situáciách.
   
   • Vlastnú implementáciu binárnych vyhľadávacích stromov (BVS) bez vyvažovania.
+
   • Vlastnú implementáciu niektorého (podľa vlastného výberu) algoritmu
   pre vyvažovanie BVS, napr. AVL, Červeno-Čierne stromy, stromy, 
   stromy, Splay stromy, ...
+
   • Prevzatú (nie vlastnú) implementáciu iného algoritmu na vyvažovanie
   BVS. Iný algoritmus ako v predchádzajúcom bode. Zdroj musí byť uvedený.
+
   • Vlastnú implementáciu hashovania s riešením kolízií podľa vlastného
   výberu. Treba implementovať aj operáciu zväčšenia hashovacej tabuľky.
+
   • Prevzatú (nie vlastnú) implementáciu hashovania s riešením kolízii iným
   spôsobom ako v predchádzajúcom bode. Zdroj musí byť uvedený.
