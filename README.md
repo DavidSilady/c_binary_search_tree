@@ -5,4 +5,4 @@ Hash table storing integers using chaining BVS trees.
 Resizing implemented.
 
 To use, include <hash.h> or <tree.h>
-Both are required to run the hash.
+Both tree.c and hash.c are required to run the hash.
